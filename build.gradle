@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+archivesBaseName = "Hero"
+version = '1.0'
+applicationName = "hero"
+mainClassName = "App"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    compile 'com.google.guava:guava:23.0'
+    compile group: 'com.sparkjava', name:'spark-core', version:'2.3'
+    compile group: 'org.slf4j', name:'slf4j-simple', version:'1.7.21'
+    testCompile 'junit:junit:4.12'
+    compile 'com.sparkjava:spark-template-velocity:2.5.5'
+}
+defaultTasks = ['clean']
+task stage(dependsOn: ['clean', 'installApp'])
+
